@@ -94,6 +94,7 @@ include(GNUInstallDirs)
 
 find_package(Eigen3 REQUIRED)
 message("Eigen: "${EIGEN3_INCLUDE_DIR})
+set(EIGEN_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR})
 
 # optionally, opencl
 # OpenCL disabled as its code is not up-to-date with API
@@ -146,7 +147,7 @@ endif ()
 set_target_properties(${LIB_NAME} PROPERTIES VERSION "${PROJECT_VERSION}" SOVERSION 1)
 
 target_include_directories(${LIB_NAME} PUBLIC
-	${EIGEN3_INCLUDE_DIR}
+	${EIGEN_INCLUDE_DIR}
 	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
   )
