@@ -92,16 +92,7 @@ endif ()
 
 include(GNUInstallDirs)
 
-# eigen 2 or 3
-find_path(EIGEN_INCLUDE_DIR Eigen/Core
-	/usr/local/include/eigen3
-	/usr/local/include/eigen2
-	/usr/local/include/eigen
-	/usr/include/eigen3
-	/usr/include/eigen2
-	/usr/include/eigen
-	/opt/local/include/eigen3
-)
+find_package(Eigen3 REQUIRED)
 
 # optionally, opencl
 # OpenCL disabled as its code is not up-to-date with API
@@ -154,7 +145,7 @@ endif ()
 set_target_properties(${LIB_NAME} PROPERTIES VERSION "${PROJECT_VERSION}" SOVERSION 1)
 
 target_include_directories(${LIB_NAME} PUBLIC
-	${EIGEN_INCLUDE_DIR}
+	${EIGEN3_INCLUDE_DIR}
 	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
   )
