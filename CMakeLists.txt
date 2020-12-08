@@ -93,6 +93,7 @@ endif ()
 include(GNUInstallDirs)
 
 find_package(Eigen3 REQUIRED)
+message("Eigen: "${EIGEN3_INCLUDE_DIR})
 
 # optionally, opencl
 # OpenCL disabled as its code is not up-to-date with API
